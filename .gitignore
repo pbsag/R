@@ -1,0 +1,9 @@
+# Ignore all files except for the few listed here
+*
+!.gitignore
+!README.md
+!CRAN_packages.csv
+!GitHub_packages.csv
+!packages.R
+!/R*.exe
+!setup.bat
