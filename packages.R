@@ -41,8 +41,8 @@ if (!require(tidyverse, lib.loc = lib)){
     type = "binary",
     version = "1.1.1",
     lib = lib,
-    dependencies = TRUE
-    # quiet = TRUE
+    dependencies = TRUE,
+    quiet = TRUE
   )
 }
 library(tidyverse, quietly = TRUE)
@@ -61,8 +61,8 @@ if (nrow(cran_csv) > 0){
         type = "binary",
         version = ver,
         lib = lib,
-        dependencies = TRUE
-        # quiet = TRUE
+        dependencies = TRUE,
+        quiet = TRUE
       )
     }
   }
@@ -87,8 +87,8 @@ if (nrow(gh_csv) > 0){
         ref = ref,
         auth_token = auth_token,
         lib = lib,
-        dependencies = TRUE
-        # quiet = TRUE
+        dependencies = TRUE,
+        quiet = TRUE
       )
     }
   }
