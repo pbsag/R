@@ -6,4 +6,5 @@
 !GitHub_packages.csv
 !packages.R
 !/R*.exe
-!setup.bat
+!1 - Download Rtools.url
+!2 - setup.bat

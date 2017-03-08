@@ -14,9 +14,11 @@ lib <- file.path(getwd(), r_dir, "library")
 if (!require(devtools, lib.loc = lib)){
   install.packages(
     "devtools",
-    repos= "http://cran.us.r-project.org",
+    repos= "https://cran.rstudio.com/",
+    type = "binary",
     lib = lib,
     dependencies = TRUE
+    # quiet = TRUE
   )
 }
 library(devtools, quietly = TRUE)
@@ -26,10 +28,12 @@ library(devtools, quietly = TRUE)
 if (!require(readr, lib.loc = lib)){
   install_version(
     "readr",
-    repos = "http://cran.us.r-project.org",
+    repos = "https://cran.rstudio.com/",
+    type = "binary",
     version = "0.2.2",
     lib = lib,
     dependencies = TRUE
+    # quiet = TRUE
   )
 }
 library(readr, quietly = TRUE)
@@ -44,10 +48,12 @@ if (nrow(cran_csv) > 0){
     if (!require(pkg, character.only = TRUE, lib.loc = lib)){
       install_version(
         pkg,
-        repos = "http://cran.us.r-project.org",
+        repos = "https://cran.rstudio.com/",
+        type = "binary",
         version = ver,
         lib = lib,
         dependencies = TRUE
+        # quiet = TRUE
       )
     }
   }
@@ -73,6 +79,7 @@ if (nrow(gh_csv) > 0){
         auth_token = auth_token,
         lib = lib,
         dependencies = TRUE
+        # quiet = TRUE
       )
     }
   }
