@@ -24,6 +24,7 @@ R-3.3.2\bin\Rscript.exe packages.R %r_dir%
 if %errorlevel% EQU 0 (
   echo Package installation complete
 ) else (
+  echo.
   echo Package installation failed
   pause
   exit

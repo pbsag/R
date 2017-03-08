@@ -3,10 +3,6 @@
 args <- commandArgs(trailingOnly = TRUE)
 r_dir <- args[1]
 
-# FOR TESTING ONLY
-# r_dir <- "R-3.3.2"
-# setwd("C:\\projects\\r_distribution")
-
 # Set the library variable for all packages
 lib <- file.path(getwd(), r_dir, "library")
 
@@ -22,10 +18,20 @@ if (!require(devtools, lib.loc = lib)){
   )
 }
 library(devtools, quietly = TRUE)
-if (!setup_rtools()) {
-  cat("Rtools not found. Install Rtools before running 2 - setup.bat")
-  quit(save = "no", status = 1)
-}
+
+# Check that a development environment is present (Rtools)
+setup <- setup_rtools()
+suppressWarnings(
+  suppressMessages(
+    tryCatch(
+      has_devel(),
+      error = function(e) {
+        cat("\nRtools not found. Install Rtools before running 2 - setup.bat")
+        quit(save = "no", status = 1)
+      }
+    )
+  )
+)
 
 # tidyverse is installed next to read the CRAN/GitHub csv files
 if (!require(tidyverse, lib.loc = lib)){
