@@ -17,26 +17,29 @@ if (!require(devtools, lib.loc = lib)){
     repos= "https://cran.rstudio.com/",
     type = "binary",
     lib = lib,
-    dependencies = TRUE
-    # quiet = TRUE
+    dependencies = TRUE,
+    quiet = TRUE
   )
 }
 library(devtools, quietly = TRUE)
+if (!setup_rtools()) {
+  cat("Rtools not found. Install Rtools before running 2 - setup.bat")
+  quit(save = "no", status = 1)
+}
 
-# readr is installed next to read the CRAN/GitHub csv files
-# (trying to install tidyverse here leads to headaches)
-if (!require(readr, lib.loc = lib)){
+# tidyverse is installed next to read the CRAN/GitHub csv files
+if (!require(tidyverse, lib.loc = lib)){
   install_version(
-    "readr",
+    "tidyverse",
     repos = "https://cran.rstudio.com/",
     type = "binary",
-    version = "0.2.2",
+    version = "1.1.1",
     lib = lib,
     dependencies = TRUE
     # quiet = TRUE
   )
 }
-library(readr, quietly = TRUE)
+library(tidyverse, quietly = TRUE)
 
 # Read the csv of additional CRAN packages to install and install them
 cran_csv <- read_csv("CRAN_packages.csv")
