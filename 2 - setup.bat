@@ -22,6 +22,7 @@ echo Installing packages...
 set errorlevel=
 R-3.3.2\bin\Rscript.exe packages.R %r_dir%
 if %errorlevel% EQU 0 (
+  echo.
   echo Package installation complete
 ) else (
   echo.
