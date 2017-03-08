@@ -2,13 +2,13 @@
 
 rem this file must be run with admin rights
 
-rem set the r installation folder name
-set r_dir="R-3.3.2"
+rem set the r version number
+set r_ver="R-3.3.3"
 
 rem install R to the current directory
 echo Installing R...
 set errorlevel=
-R-3.3.2-win.exe /SILENT /DIR=%cd%\%r_dir%
+%r_ver%-win.exe /SILENT /DIR=%cd%\%r_ver%
 if %errorlevel% EQU 0 (
   echo R installation complete
 ) else (
@@ -20,7 +20,7 @@ if %errorlevel% EQU 0 (
 rem run the packages.R script
 echo Installing packages...
 set errorlevel=
-R-3.3.2\bin\Rscript.exe packages.R %r_dir%
+%r_ver%\bin\Rscript.exe packages.R %r_ver%
 if %errorlevel% EQU 0 (
   echo.
   echo Package installation complete
