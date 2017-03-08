@@ -33,19 +33,20 @@ suppressWarnings(
   )
 )
 
-# tidyverse is installed next to read the CRAN/GitHub csv files
-if (!require(tidyverse, lib.loc = lib)){
+# readr is installed next to read the CRAN/GitHub csv files
+# trying to load tidyverse at this point causes errors
+if (!require(readr, lib.loc = lib)){
   install_version(
-    "tidyverse",
+    "readr",
     repos = "https://cran.rstudio.com/",
-    type = "binary",
-    version = "1.1.1",
+    # type = "binary",
+    version = "0.2.2",
     lib = lib,
     dependencies = TRUE,
     quiet = TRUE
   )
 }
-library(tidyverse, quietly = TRUE)
+library(readr, quietly = TRUE)
 
 # Read the csv of additional CRAN packages to install and install them
 cran_csv <- read_csv("CRAN_packages.csv")
