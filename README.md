@@ -7,8 +7,16 @@ without needing to include an R distribution in each one.
 Bring it in as a
 [submodule](https://github.com/blog/2104-working-with-submodules).
 
-# Installing R
-Simply run setup.bat
+# Installation
+
+## Installing Rtools
+Double click "1 - Download Rtools.url" to install the
+proper executable and run it (accepting all defaults).
+
+Rtools is required by certain packages to compile for source code.
+
+## Installing R
+Double click setup.bat
 
 This will install R to the repository directory.
 Everything installed will be ignored by git, but will be
@@ -18,12 +26,12 @@ available to the local machine.
 Most of the time, simply delete the R folder.
 
 If developing the repo, other files may clutter the folder,
-and they are ignored by the .gitignore file. Open git bash
+and they will be ignored by git. To easily delete, open git bash
 and use the following two commands to clean out the folder.
 Make sure your programs (Rstudio, TrandCAD, etc.) are closed.
 
-To see a preview of what files will be deleted
+To see a preview of what files will be deleted:
 git clean -nxd
 
-To delete the files
+To delete the files:
 git clean -fxd
