@@ -6,17 +6,22 @@ r_dir <- args[1]
 # Set the library variable for all packages
 lib <- file.path(getwd(), r_dir, "library")
 
-# devtools must be installed first
-if (!require(devtools, lib.loc = lib)){
-  install.packages(
-    "devtools",
-    repos= "https://cran.rstudio.com/",
-    type = "binary",
-    lib = lib,
-    dependencies = TRUE,
-    quiet = TRUE
-  )
-}
+# install package "versions"
+install.packages(
+  "versions",
+  repos= "https://cran.rstudio.com/",
+  lib = lib,
+  dependencies = TRUE,
+  quiet = TRUE
+)
+library(versions, quietly = TRUE)
+install.versions(
+  "devtools",
+  "1.12.0",
+  lib = lib,
+  dependencies = TRUE,
+  quiet = TRUE
+)
 library(devtools, quietly = TRUE)
 
 # Check that a development environment is present (Rtools)
@@ -35,38 +40,25 @@ suppressWarnings(
 
 # readr is installed next to read the CRAN/GitHub csv files
 # trying to load tidyverse at this point causes errors
-if (!require(readr, lib.loc = lib)){
-  install_version(
-    "readr",
-    repos = "https://cran.rstudio.com/",
-    # type = "binary",
-    version = "0.2.2",
-    lib = lib,
-    dependencies = TRUE,
-    quiet = TRUE
-  )
-}
+install.versions(
+  "readr",
+  "0.2.2",
+  lib = lib,
+  dependencies = TRUE,
+  quiet = TRUE
+)
 library(readr, quietly = TRUE)
 
 # Read the csv of additional CRAN packages to install and install them
 cran_csv <- read_csv("CRAN_packages.csv")
 if (nrow(cran_csv) > 0){
-  for (r in 1:nrow(cran_csv)){
-    pkg <- cran_csv$Package[r]
-    ver <- cran_csv$Version[r]
-    
-    if (!require(pkg, character.only = TRUE, lib.loc = lib)){
-      install_version(
-        pkg,
-        repos = "https://cran.rstudio.com/",
-        type = "binary",
-        version = ver,
-        lib = lib,
-        dependencies = TRUE,
-        quiet = TRUE
-      )
-    }
-  }
+  install.versions(
+    cran_csv$Package,
+    cran_csv$Version,
+    lib = lib,
+    dependencies = TRUE,
+    quiet = TRUE
+  )
 }
 
 # Read the csv of GitHub packages to install and install them
@@ -76,17 +68,11 @@ if (nrow(gh_csv) > 0){
     pkg <- gh_csv$Package[r]
     repo <- gh_csv$repo[r]
     ref <- gh_csv$ref[r]
-    auth_token <- gh_csv$auth_token[r]
-    if (is.na(auth_token)){
-      auth_token <- NULL
-    }
     
     if (!require(pkg, character.only = TRUE, lib.loc = lib)){
       install_github(
-        pkg,
         repo = repo,
         ref = ref,
-        auth_token = auth_token,
         lib = lib,
         dependencies = TRUE,
         quiet = TRUE
@@ -94,4 +80,3 @@ if (nrow(gh_csv) > 0){
     }
   }
 }
-
