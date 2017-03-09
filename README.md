@@ -1,7 +1,9 @@
 # SAGs R Repository
 Central repo for managing R versions. This repo allows
 us to manage R across multiple project repositories
-without needing to include an R distribution in each one.
+without needing to include a separate R distribution in each one.
+It also makes controlling and archiving R versions easier so that
+our models stay reproducible into the reasonable future.
 
 # Adding this to your repo
 Bring it in as a
@@ -35,3 +37,6 @@ git clean -nxd
 
 To delete the files:
 git clean -fxd
+
+# Contributing to this repo
+Instructions coming soon to a wiki page in the repo.
