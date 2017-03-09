@@ -1,7 +1,13 @@
-# r_distribution
-Central repo for managing R versions
+# SAGs R Repository
+Central repo for managing R versions. This repo allows
+us to manage R across multiple project repositories
+without needing to include an R distribution in each one.
 
-# Installation
+# Adding this to your repo
+Bring it in as a
+[submodule](https://github.com/blog/2104-working-with-submodules).
+
+# Installing R
 Simply run setup.bat
 
 This will install R to the repository directory.
