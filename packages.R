@@ -75,7 +75,7 @@ suppressWarnings(
 # Install package "Rcpp"
 install.versions(
   "Rcpp",
-  "0.12.10",
+  "0.12.11",
   lib = lib,
   dependencies = TRUE,
   quiet = TRUE
