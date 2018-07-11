@@ -1,3 +1,6 @@
+# Archive Notice
+I have abandoned this approach to managing R in client model repositories. Instead, simply create a release zip that includes the exact R distribution you were using (e.g. R-3.3.3) and attach it to the release.
+
 # SAGs R Repository
 Central repo for managing R versions. This repo allows
 us to manage R across multiple project repositories
